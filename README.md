@@ -6,6 +6,7 @@
     <style>
         body {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -22,31 +23,47 @@
             align-items: center;
             font-size: 36px;
             font-weight: bold;
-            color: #000;
-            border-radius: 8px; /* opcional */
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #555;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #333;
         }
     </style>
 </head>
 <body>
 
-    <div class="reloj" id="reloj">
-        00:00:00
-    </div>
+    <div class="reloj" id="reloj">00:00:00</div>
+
+    <button onclick="volver()">Volver al inicio</button>
 
     <script>
         function actualizarReloj() {
             const ahora = new Date();
-            let horas = ahora.getHours();
-            let minutos = ahora.getMinutes();
-            let segundos = ahora.getSeconds();
+            let h = ahora.getHours();
+            let m = ahora.getMinutes();
+            let s = ahora.getSeconds();
 
-            // Agregar cero si es menor a 10
-            horas = horas < 10 ? "0" + horas : horas;
-            minutos = minutos < 10 ? "0" + minutos : minutos;
-            segundos = segundos < 10 ? "0" + segundos : segundos;
+            h = h < 10 ? "0" + h : h;
+            m = m < 10 ? "0" + m : m;
+            s = s < 10 ? "0" + s : s;
 
-            document.getElementById("reloj").textContent =
-                horas + ":" + minutos + ":" + segundos;
+            document.getElementById("reloj").textContent = `${h}:${m}:${s}`;
+        }
+
+        function volver() {
+            window.location.href = "index.html";
         }
 
         setInterval(actualizarReloj, 1000);
