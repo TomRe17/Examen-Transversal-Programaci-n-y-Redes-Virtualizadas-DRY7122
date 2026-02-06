@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Saludos y Calculadora</title>
+    <title>Calculadora</title>
     <style>
       * {
         margin: 0;
@@ -68,6 +68,12 @@
         50% {
           opacity: 0.5;
         }
+      }
+
+      .calculator-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
       }
 
       .calculator {
@@ -151,6 +157,29 @@
       .btn-equals:hover {
         background-color: #16a34a;
       }
+
+      .clock-btn {
+        background-color: #2563eb;
+        color: white;
+        font-weight: 600;
+        padding: 1rem 2rem;
+        width: 320px;
+        border: none;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+        cursor: pointer;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        transition: all 0.2s;
+      }
+
+      .clock-btn:hover {
+        background-color: #1d4ed8;
+        transform: scale(1.02);
+      }
+
+      .clock-btn:active {
+        transform: scale(0.98);
+      }
     </style>
   </head>
   <body>
@@ -162,34 +191,40 @@
       <div id="greeting-message" class="greeting-message"></div>
     </div>
 
-    <div class="calculator">
-      <div class="display">
-        <div class="display-value" id="display">0</div>
+    <div class="calculator-container">
+      <div class="calculator">
+        <div class="display">
+          <div class="display-value" id="display">0</div>
+        </div>
+
+        <div class="buttons-grid">
+          <button class="btn-clear" onclick="clearDisplay()">C</button>
+          <button class="btn-operator" onclick="setOperation('÷')">÷</button>
+          <button class="btn-operator" onclick="setOperation('×')">×</button>
+
+          <button class="btn-number" onclick="appendNumber('7')">7</button>
+          <button class="btn-number" onclick="appendNumber('8')">8</button>
+          <button class="btn-number" onclick="appendNumber('9')">9</button>
+          <button class="btn-operator" onclick="setOperation('-')">-</button>
+
+          <button class="btn-number" onclick="appendNumber('4')">4</button>
+          <button class="btn-number" onclick="appendNumber('5')">5</button>
+          <button class="btn-number" onclick="appendNumber('6')">6</button>
+          <button class="btn-operator" onclick="setOperation('+')">+</button>
+
+          <button class="btn-number" onclick="appendNumber('1')">1</button>
+          <button class="btn-number" onclick="appendNumber('2')">2</button>
+          <button class="btn-number" onclick="appendNumber('3')">3</button>
+          <button class="btn-equals" onclick="calculate()">=</button>
+
+          <button class="btn-number" style="grid-column: span 2;" onclick="appendNumber('0')">0</button>
+          <button class="btn-number" onclick="appendDecimal()">.</button>
+        </div>
       </div>
 
-      <div class="buttons-grid">
-        <button class="btn-clear" onclick="clearDisplay()">C</button>
-        <button class="btn-operator" onclick="setOperation('÷')">÷</button>
-        <button class="btn-operator" onclick="setOperation('×')">×</button>
-
-        <button class="btn-number" onclick="appendNumber('7')">7</button>
-        <button class="btn-number" onclick="appendNumber('8')">8</button>
-        <button class="btn-number" onclick="appendNumber('9')">9</button>
-        <button class="btn-operator" onclick="setOperation('-')">-</button>
-
-        <button class="btn-number" onclick="appendNumber('4')">4</button>
-        <button class="btn-number" onclick="appendNumber('5')">5</button>
-        <button class="btn-number" onclick="appendNumber('6')">6</button>
-        <button class="btn-operator" onclick="setOperation('+')">+</button>
-
-        <button class="btn-number" onclick="appendNumber('1')">1</button>
-        <button class="btn-number" onclick="appendNumber('2')">2</button>
-        <button class="btn-number" onclick="appendNumber('3')">3</button>
-        <button class="btn-equals" onclick="calculate()">=</button>
-
-        <button class="btn-number" style="grid-column: span 2;" onclick="appendNumber('0')">0</button>
-        <button class="btn-number" onclick="appendDecimal()">.</button>
-      </div>
+      <a href="clock.html">
+        <button class="clock-btn">Ver Reloj</button>
+      </a>
     </div>
 
     <script>
